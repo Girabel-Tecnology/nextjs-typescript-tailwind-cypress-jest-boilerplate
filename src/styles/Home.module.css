@@ -1,0 +1,11 @@
+.firstAnimation {
+  animation-delay: 0.5s;
+}
+
+.secondAnimation {
+  animation-delay: 1s;
+}
+
+.thirdAnimation {
+  animation-delay: 1.5s;
+}
