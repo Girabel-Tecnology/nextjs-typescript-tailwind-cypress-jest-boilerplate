@@ -14,8 +14,7 @@ const Home: NextPage = () => {
         <div className='bg-gradient-to-t from-primary-dark to-transparent flex-1 z-10 absolute h-screen w-full' />
         <div className='container m-8 flex md:mx-auto lg:mx-auto flex-col z-10'>
           <nav className='flex items-center justify-between'>
-            <span className='text-white text-2xl font-bold'>Girabel</span>
-
+            <span className='text-white text-2xl font-bold '>Girabel</span>
             <SecondaryButton>Sign In</SecondaryButton>
           </nav>
 
@@ -37,7 +36,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className='h-screen w-full z-10 bg-orange-800'>teste</div>
+
     </div>
   );
 };
