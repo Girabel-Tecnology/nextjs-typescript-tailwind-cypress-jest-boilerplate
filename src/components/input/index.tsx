@@ -23,11 +23,11 @@ export const Input: React.FC<DefaultInputProps> = ({
     <div className={'flex flex-col'}>
       <strong>{label}</strong>
       <input
-        {...register}
         className={styles.defaultInput}
         type={type}
         value={value}
         onChange={(value) => onChange(value)}
+        {...register}
       />
       <span className={'text-red-700'}>{errors && errors.message}</span>
     </div>
