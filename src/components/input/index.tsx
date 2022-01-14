@@ -1,13 +1,35 @@
-import React, {ChangeEventHandler} from "react";
-import styles from './index.module.css'
+import React, { ChangeEventHandler, HTMLInputTypeAttribute } from 'react';
+import styles from './index.module.css';
+import { FieldErrors } from 'react-hook-form';
 
 interface DefaultInputProps {
-  value?: string
-  onChange?: ChangeEventHandler<HTMLInputElement>
+  type?: HTMLInputTypeAttribute;
+  value?: string;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  label?: string;
+  errors?: FieldErrors;
+  register: any;
 }
 
-export const Input: React.FC<DefaultInputProps> = ({value, onChange}) => {
-  return <div className={'flex flex-col'}>
-    <input className={styles.defaultInput} value={value} onChange={(value) => onChange(value)}/>
-  </div>
-}
+export const Input: React.FC<DefaultInputProps> = ({
+  value,
+  onChange = (value: any) => null,
+  type,
+  label,
+  errors,
+  register,
+}) => {
+  return (
+    <div className={'flex flex-col'}>
+      <strong>{label}</strong>
+      <input
+        {...register}
+        className={styles.defaultInput}
+        type={type}
+        value={value}
+        onChange={(value) => onChange(value)}
+      />
+      <span className={'text-red-700'}>{errors && errors.message}</span>
+    </div>
+  );
+};

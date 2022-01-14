@@ -1,12 +1,20 @@
-import { useMemo } from 'react';
+import React, { ButtonHTMLAttributes, DetailedHTMLProps, useMemo } from 'react';
 import styles from './index.module.css';
 
-export const PrimaryButton: React.FC = ({ children }) => {
+interface ButtonProps {
+  type?: 'submit';
+}
+
+export const Button: React.FC<ButtonProps> = ({ children, type }) => {
   const classes = useMemo(() => {
     return [styles.button, styles.primaryButton].join(' ');
   }, []);
 
-  return <button className={classes}>{children}</button>;
+  return (
+    <button type={type} className={classes}>
+      {children}
+    </button>
+  );
 };
 
 export const SecondaryButton: React.FC = ({ children }) => {
