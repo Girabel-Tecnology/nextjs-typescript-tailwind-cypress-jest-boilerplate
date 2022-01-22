@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
-import { Button, SecondaryButton } from '../components/button';
+import { Button, SecondaryButton } from '../components/atoms/button';
 
 const Home: NextPage = () => {
   return (

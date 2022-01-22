@@ -1,28 +1,29 @@
-import { Input } from '../input';
-import { Button } from '../button';
+import { Input } from '../atoms/input';
+import { Button } from '../atoms/button';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useCallback } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signInSchema } from '../../schemas/signIn';
-
-type Inputs = {
-  email: string;
-  password: string;
-};
+import { useUserContext } from '../../hooks/useUserContext';
+import { SignInParams } from '../../context/userContext';
+import { useFormResolver } from '../../hooks/useFormResolver';
 
 export const SignForm = () => {
+  const { signIn } = useUserContext();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>({
-    resolver: yupResolver(signInSchema),
-  });
+  } = useFormResolver<SignInParams>(signInSchema);
 
-  const onSubmit: SubmitHandler<Inputs> = useCallback((data) => {
-    alert('a');
-  }, []);
+  const onSubmit: SubmitHandler<SignInParams> = useCallback(
+    async (data) => {
+      await signIn(data);
+    },
+    [signIn]
+  );
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={'flex flex-col gap-4'}>
